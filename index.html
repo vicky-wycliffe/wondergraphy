@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wondergraphy Kathageri – Your One Stop Service Centre</title>
+<style>
+:root{--bg:#f6f8ff;--card:#fff;--ink:#0b1b4a;--mut:#56608a;--blue:#1337c9;--yel:#ffc928;--line:#dfe5fb;--ok:#0f9d58;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1130;--card:#121c47;--ink:#eef1ff;--mut:#a5afdc;--blue:#6f8cff;--line:#243066;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1130;--card:#121c47;--ink:#eef1ff;--mut:#a5afdc;--blue:#6f8cff;--line:#243066;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(135deg,#0f2cb0,#1d4ef0 60%,#3a74ff);color:#fff;padding:36px 0 48px;border-radius:0 0 28px 28px}
+.brand{font-weight:900;font-size:clamp(30px,8vw,52px);letter-spacing:-1px;line-height:1.05;margin:0}
+.brand span{color:var(--yel)}
+.tag{font-style:italic;opacity:.9;margin:8px 0 18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.pills b{background:rgba(255,255,255,.16);padding:4px 12px;border-radius:99px;font-size:13px}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:800;padding:13px 22px;border-radius:14px;text-decoration:none;background:var(--yel);color:#0b1b4a;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:rgba(255,255,255,.15);color:#fff;margin-left:6px}
+h2{font-size:24px;margin:34px 0 4px}
+.sub{color:var(--mut);margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.svc{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center;cursor:pointer;font:inherit;color:var(--ink);transition:.18s}
+.svc:hover{transform:translateY(-3px);border-color:var(--blue)}
+.svc.on{border-color:var(--yel);background:color-mix(in srgb,var(--yel) 18%,var(--card));box-shadow:0 6px 18px rgba(255,201,40,.35)}
+.svc i{font-style:normal;font-size:32px;display:block}
+.svc b{display:block;font-size:14px;margin-top:6px}
+.svc small{color:var(--mut);font-size:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px}
+.steps{display:flex;gap:6px;margin-bottom:16px}
+.steps div{flex:1;text-align:center;font-size:12px;font-weight:700;padding:8px 2px;border-radius:10px;background:var(--bg);color:var(--mut)}
+.steps div.on{background:var(--blue);color:#fff}
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+input,textarea,select{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--blue)}
+.pay{background:linear-gradient(135deg,#0f9d58,#1bc772);color:#fff;border-radius:16px;padding:18px;text-align:center}
+.pay .num{font-size:32px;font-weight:900;letter-spacing:1px}
+.pay button{background:#fff;color:#0a6b3a;border:0;border-radius:10px;padding:6px 14px;font-weight:800;cursor:pointer;margin-top:6px}
+ol{padding-left:20px;color:var(--mut)}
+.sum{background:var(--bg);border-radius:12px;padding:12px;font-size:14px}
+.hide{display:none}
+.err{color:#d93025;font-size:13px;min-height:18px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.why div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+footer{margin:40px 0 24px;text-align:center;color:var(--mut);font-size:14px}
+.wa{display:inline-block;margin-top:14px;background:#25d366;color:#05361a;font-weight:800;padding:14px 22px;border-radius:14px;text-decoration:none}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="brand">Wonder<span>graphy</span><br>Kathageri</p>
+<p class="tag">Your one stop digital &amp; business solutions</p>
+<div class="pills"><b>Fast</b><b>Reliable</b><b>Affordable</b></div>
+<a class="btn" href="#book">Book a service</a><a class="btn ghost" href="tel:0705308177">📞 0705308177</a>
+</div></header>
+
+<main class="wrap">
+<section id="book">
+<h2>1. Pick a service</h2>
+<p class="sub">Tap what you need, book and pay from your phone.</p>
+<div class="grid" id="grid"></div>
+
+<div class="card" id="flow">
+<div class="steps"><div id="s1" class="on">1 Details</div><div id="s2">2 Pay</div><div id="s3">3 Confirm</div></div>
+
+<div id="p1">
+<div class="sum" id="chosen">Select a service above to begin.</div>
+<label for="nm">Your name</label><input id="nm" autocomplete="name" placeholder="e.g. Jane Wanjiku">
+<label for="ph">Phone number</label><input id="ph" type="tel" autocomplete="tel" placeholder="07XX XXX XXX">
+<label for="dt">Tell us what you need</label><textarea id="dt" rows="3" placeholder="e.g. 20 copies of my CV, colour, A4"></textarea>
+<label for="am">Amount to pay now (KES)</label><input id="am" type="number" min="1" inputmode="numeric" placeholder="Quoted price or deposit">
+<div class="err" id="e1"></div>
+<button class="btn" style="background:var(--blue);color:#fff;width:100%" id="to2">Continue to payment</button>
+</div>
+
+<div id="p2" class="hide">
+<div class="pay">Send money via M-Pesa to<div class="num" id="mp"></div>
+<div id="mpn"></div><div>Amount: <b id="pamt"></b></div>
+<button id="cp">Copy number</button></div>
+<ol><li>Open M-Pesa → Send Money</li><li>Enter the number above and the amount</li><li>Come back here with the M-Pesa confirmation code</li></ol>
+<label for="cd">M-Pesa confirmation code</label><input id="cd" maxlength="10" placeholder="e.g. SJK4X2LM9P" style="text-transform:uppercase">
+<div class="err" id="e2"></div>
+<button class="btn" style="background:var(--blue);color:#fff;width:100%" id="to3">I have paid</button>
+<p><a href="#" id="b1">← Back</a></p>
+</div>
+
+<div id="p3" class="hide">
+<div class="sum" id="recap"></div>
+<p>Last step: send your booking to us on WhatsApp so we start right away. We verify your payment and get working.</p>
+<a class="wa" id="wa" target="_blank" rel="noopener">Send booking on WhatsApp</a>
+<p><a href="#" id="again">Make another booking</a></p>
+</div>
+</div>
+</section>
+
+<h2>Why choose us</h2>
+<div class="why">
+<div><b>⚡ Fast turnaround</b><br>Most jobs done same day.</div>
+<div><b>🛡️ Reliable</b><br>Honest service you can trust.</div>
+<div><b>💸 Affordable</b><br>Fair prices, no surprises.</div>
+<div><b>📲 Book from home</b><br>Pay by M-Pesa, skip the queue.</div>
+</div>
+</main>
+
+<footer class="wrap">
+<b>Wondergraphy Kathageri</b><br>Your Needs, Our Priority<br>
+📞 0705308177 · ✉️ davisbizna@gmail.com
+</footer>
+
+<script>
+// ===== EDIT THESE =====
+var PAY_NUMBER="0705308177";      // M-Pesa number customers pay to
+var PAY_NAME="";                  // name shown on M-Pesa, e.g. "Davis Kamau"
+var WA_NUMBER="254705308177";     // owner WhatsApp, country code, no +
+// ======================
+var S=[["🖨️","Printing","Documents, copies"],["📎","Binding","Spiral & more"],["🖼️","Large Printing","Banners, stickers"],["🛂","Passport & Immigration","Kenyan passport"],["📜","Birth & Death Certs","Apply, lost births"],["🏥","SHA Services","Register, appeals"],["🚗","NTSA Services","Licence, transfers"],["🧾","KRA Services","Returns, new PIN"],["🏢","BRS Services","Company applications"],["🏛️","e-Citizen","Good conduct, NCPWD"],["📄","CV Writing","Professional CVs"],["🛠️","Repairs","Laptop, phone, system"],["⌨️","Accessories & Disks","Keyboards, USBs"],["📸","Photos & Designs","Posters, cards"],["📣","Billboard Services","Outdoor ads"]];
+var sel=null,ref="WG-"+Math.random().toString(36).slice(2,6).toUpperCase();
+var $=function(i){return document.getElementById(i)};
+var g=$("grid");
+S.forEach(function(s,i){var b=document.createElement("button");b.className="svc";b.innerHTML="<i>"+s[0]+"</i><b>"+s[1]+"</b><small>"+s[2]+"</small>";
+b.onclick=function(){sel=s;[].forEach.call(g.children,function(c){c.classList.remove("on")});b.classList.add("on");$("chosen").innerHTML="Service: <b>"+s[0]+" "+s[1]+"</b>";$("flow").scrollIntoView({behavior:"smooth"})};g.appendChild(b)});
+function step(n){[1,2,3].forEach(function(i){$("p"+i).classList.toggle("hide",i!==n);$("s"+i).classList.toggle("on",i<=n)});$("flow").scrollIntoView({behavior:"smooth"})}
+$("to2").onclick=function(){
+ var n=$("nm").value.trim(),p=$("ph").value.replace(/\s/g,""),a=+$("am").value;
+ if(!sel)return $("e1").textContent="Please pick a service above.";
+ if(n.length<2)return $("e1").textContent="Enter your name.";
+ if(!/^(\+?254|0)[17]\d{8}$/.test(p))return $("e1").textContent="Enter a valid Kenyan phone number.";
+ if(!(a>0))return $("e1").textContent="Enter the amount you are paying.";
+ $("e1").textContent="";$("mp").textContent=PAY_NUMBER;$("mpn").textContent=PAY_NAME;$("pamt").textContent="KES "+a;step(2)};
+$("cp").onclick=function(){try{navigator.clipboard.writeText(PAY_NUMBER);$("cp").textContent="Copied ✓"}catch(e){$("cp").textContent="Long-press the number to copy"}};
+$("b1").onclick=function(e){e.preventDefault();step(1)};
+$("to3").onclick=function(){
+ var c=$("cd").value.trim().toUpperCase();
+ if(!/^[A-Z0-9]{10}$/.test(c))return $("e2").textContent="Enter the 10-character M-Pesa code from your SMS.";
+ $("e2").textContent="";
+ var d={n:$("nm").value.trim(),p:$("ph").value.trim(),t:$("dt").value.trim(),a:$("am").value};
+ var msg="NEW BOOKING "+ref+"\nService: "+sel[1]+"\nName: "+d.n+"\nPhone: "+d.p+"\nDetails: "+(d.t||"-")+"\nPaid: KES "+d.a+"\nM-Pesa code: "+c;
+ $("recap").innerHTML="<b>"+ref+"</b><br>"+sel[0]+" "+sel[1]+"<br>"+d.n+" · "+d.p+"<br>Paid KES "+d.a+" · Code "+c;
+ $("wa").href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);step(3)};
+$("again").onclick=function(e){e.preventDefault();ref="WG-"+Math.random().toString(36).slice(2,6).toUpperCase();["dt","am","cd"].forEach(function(i){$(i).value=""});step(1)};
+</script>
+</body>
+</html>
