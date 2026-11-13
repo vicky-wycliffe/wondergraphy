@@ -49,6 +49,14 @@ ol{padding-left:20px;color:var(--mut)}
 .why div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
 footer{margin:40px 0 24px;text-align:center;color:var(--mut);font-size:14px}
 .wa{display:inline-block;margin-top:14px;background:#25d366;color:#05361a;font-weight:800;padding:14px 22px;border-radius:14px;text-decoration:none}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3);z-index:20}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:n}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;position:relative}
+.how div::before{counter-increment:n;content:counter(n);display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--yel);color:#0b1b4a;font-weight:900;align-items:center;justify-content:center;margin-bottom:8px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}
+summary{font-weight:700;cursor:pointer}
+.price{display:inline-block;background:var(--yel);color:#0b1b4a;font-weight:800;border-radius:99px;padding:2px 10px;font-size:13px}
+.loc{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -98,6 +106,14 @@ footer{margin:40px 0 24px;text-align:center;color:var(--mut);font-size:14px}
 </div>
 </section>
 
+<h2>How it works</h2>
+<div class="how">
+<div><b>Choose</b><br>Pick the service you need.</div>
+<div><b>Pay by M-Pesa</b><br>Send the amount to our number.</div>
+<div><b>Confirm</b><br>Enter your code and send the booking on WhatsApp.</div>
+<div><b>We get to work</b><br>We start right away and call you when it is ready.</div>
+</div>
+
 <h2>Why choose us</h2>
 <div class="why">
 <div><b>⚡ Fast turnaround</b><br>Most jobs done same day.</div>
@@ -106,6 +122,16 @@ footer{margin:40px 0 24px;text-align:center;color:var(--mut);font-size:14px}
 <div><b>📲 Book from home</b><br>Pay by M-Pesa, skip the queue.</div>
 </div>
 </main>
+
+<h2>Common questions</h2>
+<details><summary>How do I pay?</summary><p>Send the amount by M-Pesa to the number shown at checkout, then enter the confirmation code from the SMS.</p></details>
+<details><summary>How long does a job take?</summary><p>Most jobs are done the same day. Government services depend on the processing time of the agency, and we will tell you upfront.</p></details>
+<details><summary>I do not know the price. What do I enter?</summary><p>Call or WhatsApp us for a quote first, then book with the quoted amount or a deposit.</p></details>
+<details><summary>Can I walk in instead?</summary><p>Yes. We are in Kathageri, and booking ahead just helps us serve you faster.</p></details>
+
+<div class="card loc"><div><b>📍 Find us in Kathageri</b><br><span class="sub">Open the map for directions.</span></div><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/Wondergraphy+Kathageri">Open in Maps</a></div>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
 
 <footer class="wrap">
 <b>Wondergraphy Kathageri</b><br>Your Needs, Our Priority<br>
@@ -119,11 +145,13 @@ var PAY_NAME="";                  // name shown on M-Pesa, e.g. "Davis Kamau"
 var WA_NUMBER="254705308177";     // owner WhatsApp, country code, no +
 // ======================
 var S=[["🖨️","Printing","Documents, copies"],["📎","Binding","Spiral & more"],["🖼️","Large Printing","Banners, stickers"],["🛂","Passport & Immigration","Kenyan passport"],["📜","Birth & Death Certs","Apply, lost births"],["🏥","SHA Services","Register, appeals"],["🚗","NTSA Services","Licence, transfers"],["🧾","KRA Services","Returns, new PIN"],["🏢","BRS Services","Company applications"],["🏛️","e-Citizen","Good conduct, NCPWD"],["📄","CV Writing","Professional CVs"],["🛠️","Repairs","Laptop, phone, system"],["⌨️","Accessories & Disks","Keyboards, USBs"],["📸","Photos & Designs","Posters, cards"],["📣","Billboard Services","Outdoor ads"]];
+// Set a price in KES per service; 0 means "get a quote"
+var PRICES={"Printing":0,"Binding":0,"Large Printing":0,"Passport & Immigration":0,"Birth & Death Certs":0,"SHA Services":0,"NTSA Services":0,"KRA Services":0,"BRS Services":0,"e-Citizen":0,"CV Writing":0,"Repairs":0,"Accessories & Disks":0,"Photos & Designs":0,"Billboard Services":0};
 var sel=null,ref="WG-"+Math.random().toString(36).slice(2,6).toUpperCase();
 var $=function(i){return document.getElementById(i)};
 var g=$("grid");
 S.forEach(function(s,i){var b=document.createElement("button");b.className="svc";b.innerHTML="<i>"+s[0]+"</i><b>"+s[1]+"</b><small>"+s[2]+"</small>";
-b.onclick=function(){sel=s;[].forEach.call(g.children,function(c){c.classList.remove("on")});b.classList.add("on");$("chosen").innerHTML="Service: <b>"+s[0]+" "+s[1]+"</b>";$("flow").scrollIntoView({behavior:"smooth"})};g.appendChild(b)});
+b.onclick=function(){sel=s;[].forEach.call(g.children,function(c){c.classList.remove("on")});b.classList.add("on");var pr=PRICES[s[1]]||0;$("chosen").innerHTML="Service: <b>"+s[0]+" "+s[1]+"</b> "+(pr?"<span class='price'>KES "+pr+"</span>":"<span class='price'>Get a quote</span>");if(pr)$("am").value=pr;$("flow").scrollIntoView({behavior:"smooth"})};g.appendChild(b)});
 function step(n){[1,2,3].forEach(function(i){$("p"+i).classList.toggle("hide",i!==n);$("s"+i).classList.toggle("on",i<=n)});$("flow").scrollIntoView({behavior:"smooth"})}
 $("to2").onclick=function(){
  var n=$("nm").value.trim(),p=$("ph").value.replace(/\s/g,""),a=+$("am").value;
@@ -142,6 +170,7 @@ $("to3").onclick=function(){
  var msg="NEW BOOKING "+ref+"\nService: "+sel[1]+"\nName: "+d.n+"\nPhone: "+d.p+"\nDetails: "+(d.t||"-")+"\nPaid: KES "+d.a+"\nM-Pesa code: "+c;
  $("recap").innerHTML="<b>"+ref+"</b><br>"+sel[0]+" "+sel[1]+"<br>"+d.n+" · "+d.p+"<br>Paid KES "+d.a+" · Code "+c;
  $("wa").href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);step(3)};
+$("fab").href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Hello Wondergraphy, I need help with a service.");
 $("again").onclick=function(e){e.preventDefault();ref="WG-"+Math.random().toString(36).slice(2,6).toUpperCase();["dt","am","cd"].forEach(function(i){$(i).value=""});step(1)};
 </script>
 </body>
